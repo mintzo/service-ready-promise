@@ -8,8 +8,8 @@ module.exports = {
     'no-console': 0,
     'eqeqeq': 0,
     'no-use-before-define': 0,
-    'object-curly-newline': ['error', { 'minProperties': 6 }],
-    'prefer-promise-reject-errors': 0,
+    'comma-dangle':0,
+    'object-curly-newline': ['error', { 'minProperties': 6, "multiline": true  }],
     'max-len': ['warn', 140, 2, {
       ignoreUrls: true,
       ignoreComments: false,
