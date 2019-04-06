@@ -24,6 +24,12 @@ const verifications = {
       const pgConnectionSettings = { host: 'localhost', port: service.ports[0].external, database: 'example_db', user: 'example_user', password: 'example_password' };
       await isServiceReady.postgres.checkConnection(pgConnectionSettings);
     }
+  },
+  redis: {
+    verificationFunction: async (service) => {
+      const redisConnectionSettings = { host: 'localhost', port: service.ports[0].external };
+      await isServiceReady.redis.checkConnection(redisConnectionSettings);
+    }
   }
 };
 

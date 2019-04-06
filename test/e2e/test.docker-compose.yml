@@ -26,3 +26,10 @@ services:
       POSTGRES_DB: example_db
       POSTGRES_USER: example_user
       POSTGRES_PASSWORD: example_password
+
+  redis:
+    image: redis:5
+    ports:
+      - 6379
+    environment:
+      verificationType: redis
