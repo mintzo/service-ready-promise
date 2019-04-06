@@ -18,6 +18,12 @@ const verifications = {
       const connectionString = `mongodb://${dbUsername}:${dbPassword}@localhost:${service.ports[0].external}`;
       await isServiceReady.mongo.checkConnectionString(connectionString);
     }
+  },
+  postgres: {
+    verificationFunction: async (service) => {
+      const pgConnectionSettings = { host: 'localhost', port: service.ports[0].external, database: 'example_db', user: 'example_user', password: 'example_password' };
+      await isServiceReady.postgres.checkConnection(pgConnectionSettings);
+    }
   }
 };
 

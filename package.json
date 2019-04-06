@@ -1,7 +1,7 @@
 {
   "name": "service-ready-promise",
   "version": "1.0.0",
-  "description": "Common service ready state validations",
+  "description": "Common service ready state verifications",
   "main": "srx/index.js",
   "scripts": {
     "test": "mocha ./test/e2e/*.spec.js"
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "mongodb": "^3.2.3"
+    "mongodb": "^3.2.3",
+    "pg": "^7.9.0"
   }
 }
