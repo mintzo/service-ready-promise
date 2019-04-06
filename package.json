@@ -4,7 +4,14 @@
   "description": "Common service ready state verifications",
   "main": "srx/index.js",
   "scripts": {
-    "test": "mocha ./test/e2e/*.spec.js"
+    "test": "mocha ./test/e2e/*.spec.js",
+    "lint": "eslint ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
   },
   "repository": {
     "type": "git",
