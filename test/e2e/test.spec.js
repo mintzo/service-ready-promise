@@ -4,15 +4,28 @@ const axios = require('axios');
 const TestingEnvironment = require('docker-tester');
 const isServiceReady = require('../../src/index');
 
-const sampleHttpServiceUrl = 'localhost:7000';
+// eslint-disable-next-line object-curly-newline
+const verifications = {
+  httpServer: {
+    verificationFunction: async (service) => {
+      await isServiceReady.httpServer.urlReturns200({ url: `http://localhost:${service.ports[0].external}` });
+    }
+  },
+  mongo: {
+    verificationFunction: async (service) => {
+      const dbPassword = 'example_password';
+      const dbUsername = 'example_user';
+      const connectionString = `mongodb://${dbUsername}:${dbPassword}@localhost:${service.ports[0].external}`;
+      await isServiceReady.mongo.checkConnectionString(connectionString);
+    }
+  }
+};
 
-const verifications = { httpServer: { verificationFunction: async (service) => {
-  await isServiceReady.httpServer.urlReturns200({ url: `http://localhost:${service.ports[0].external}` });
-} } };
-
-const testingEnvironment = new TestingEnvironment({ dockerComposeFileLocation: __dirname,
+const testingEnvironment = new TestingEnvironment({
+  dockerComposeFileLocation: __dirname,
   dockerFileName: 'test.docker-compose.yml',
-  verifications });
+  verifications
+});
 
 before(async function () {
   this.timeout(0);
