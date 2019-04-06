@@ -4,7 +4,6 @@ const axios = require('axios');
 const TestingEnvironment = require('docker-tester');
 const isServiceReady = require('../../src/index');
 
-// eslint-disable-next-line object-curly-newline
 const verifications = {
   httpServer: {
     verificationFunction: async (service) => {
